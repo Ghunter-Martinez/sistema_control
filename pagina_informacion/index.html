@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Empresa de Válvulas Hidrocefálicas</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.16/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #e2e8f0;
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .product-carousel div {
+      position: relative;
+      text-align: center;
+    }
+
+    .product-carousel h3 {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      width: 80%;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .product-carousel img {
+      height: 300px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .product-carousel img:hover {
+      transform: scale(1.05);
+    }
+
+    #requestLoanBtn {
+      display: block;
+      margin: 2rem auto;
+      background-color: #2563eb;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    #requestLoanBtn:hover {
+      background-color: #1d4ed8;
+    }
+    .testimony {
+      background-color: #ffffff;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .testimony img {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #e0e0e0;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #fff;
+      padding: 5rem 2rem;
+      text-align: center;
+      border-radius: 1rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #f1f5f9;
+    }
+    header p {
+      font-size: 1.4rem;
+      color: #cbd5e1;
+    }
+
+    @keyframes colorChange {
+      0% { color: #fbbf24; }
+      50% { color: #6ee7b7; }
+      100% { color: #93c5fd; }
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      color: #1e3a8a;
+    }
+
+    .about-carousel-container {
+      margin: 0 auto;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    
+    .carousel-image {
+      width: 400px;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .section-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 2rem;
+      background: #e5e7eb;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .tns-nav {
+      text-align: center;
+      margin: 10px 0;
+    }
+    
+    .tns-nav button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+      border: 0;
+      margin: 0 4px;
+      padding: 0;
+    }
+    
+    .tns-nav button.tns-nav-active {
+      background: #2563eb;
+    }
+    
+    .tns-controls {
+      display: none;
+    }
+
+    .product-carousel .tns-item img {
+      height: 300px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+    .product-carousel .tns-item img:hover {
+      transform: scale(1.1);
+    }
+    .product-carousel .tns-nav {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+    .section-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 2rem;
+      padding: 2rem;
+      background: #e5e7eb;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+    }
+    .section-container img {
+      max-width: 440px;
+      border-radius: 2rem;
+      box-shadow: 0 9px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+
+    .modal-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+    footer {
+      background-color: #1f2937;
+      color: #e5e7eb;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 0.75rem;
+    }
+    footer .social-links a {
+      color: #e5e7eb;
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+    }
+    footer .social-links a:hover {
+      color: #3b82f6;
+    }
+
+    #chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    #chatbot-messages {
+      height: 300px;
+      overflow-y: auto;
+      padding: 16px;
+    }
+    
+    .chatbot-message {
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      border-radius: 16px;
+    }
+    
+    .chatbot-message--user {
+      background-color: #f1f1f1;
+      align-self: flex-end;
+    }
+    
+    .chatbot-message--chatbot {
+      background-color: #051269;
+      color: #fff;
+      align-self: flex-start;
+    }
+    
+    #chatbot-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: none;
+      border-top: 1px solid #f1f1f1;
+      font-size: 14px;
+    }
+    
+    #chatbot-send {
+      display: block;
+      width: 100%;
+      padding: 12px 0;
+      background-color: #1fce25;
+      color: #fff;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    #chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: height 0.3s ease;
+    }
+  
+    #chatbot.minimized {
+      height: 50px;
+      overflow: hidden;
+    }
+  
+    .chatbot-header {
+      background-color: #04068d;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+  
+    .minimize-btn {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+  
+    .chatbot-content {
+      transition: opacity 0.3s ease;
+    }
+  
+    #chatbot.minimized .chatbot-content {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Empresa de Válvulas Hidrocefálicas</h1>
+    <p>Líderes en la fabricación y distribución de válvulas de alta calidad.</p>
+  </header>
+
+  <div class="container">
+
+    <section>
+      <div class="container">
+        <section>
+          <h2>Nuestros Productos</h2>
+          <div class="product-carousel">
+            <div>
+              <img src="valvula1.jpeg" alt="Válvula 1">
+              <h3>Válvula 1</h3>
+            </div>
+            <div>
+              <img src="valvula2.jpeg" alt="Válvula 2">
+              <h3>Válvula 2</h3>
+            </div>
+            <div>
+              <img src="valvula3.jpg" alt="Válvula 3">
+              <h3>Válvula 3</h3>
+            </div>
+            <div>
+              <img src="valvula4.jpg" alt="Válvula 4">
+              <h3>Válvula 4</h3>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section>
+        <h2 class="text-center text-3xl font-bold mb-6">Sobre Nosotros</h2>
+        <div class="section-container">
+          <div class="about-carousel-container" style="width: 500px;">
+            <div class="about-carousel">
+              <div>
+                <img src="centro.jpg" alt="Nuestro Centro" class="carousel-image">
+              </div>
+              <div>
+                <img src="personal.jpeg" alt="Nuestro Laboratorio" class="carousel-image">
+              </div>
+              <div>
+                <img src="pacientes.jpeg" alt="Nuestro Equipo" class="carousel-image">
+              </div>
+              <div>
+                <img src="logros.jpeg" alt="Nuestras Instalaciones" class="carousel-image">
+              </div>
+            </div>
+          </div>
+          <div class="w-1/2">
+            <h3 class="text-2xl font-bold mb-4">Historia</h3>
+            <p>Fundada en 1985, pionera en innovación y desarrollo en soluciones de hidrocefalia, con décadas de experiencia y liderazgo.</p>
+            <h3 class="text-2xl font-bold mt-6 mb-4">Misión y Visión</h3>
+            <p>Nos esforzamos en ser la referencia global en soluciones médicas, con un compromiso inquebrantable con la calidad y el servicio.</p>
+          </div>
+        </div>
+      </section>
+
+    <section>
+      <h2 class="text-center text-3xl font-bold mb-6">Testimonios</h2>
+      <div class="flex gap-6 justify-center">
+        <div class="testimony">
+          <img src="doctor1.jpg" alt="Dr. Fernando López">
+          <p class="text-gray-600">“La calidad de las válvulas es insuperable, ayudaron a mejorar significativamente la vida de mis pacientes.”</p>
+          <p class="text-right font-semibold mt-2">— Dr. Fernando López</p>
+        </div>
+        <div class="testimony">
+          <img src="doctora.png" alt="Dra. Ana Méndez">
+          <p class="text-gray-600">“Servicio de atención al cliente muy profesional y responsable. Recomiendo esta empresa.”</p>
+          <p class="text-right font-semibold mt-2">— Dra. Ana Méndez</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-center text-3xl font-bold mb-6">Contacto</h2>
+      <div class="section-container">
+        <div>
+          <h3 class="text-xl font-bold">Oficinas Centrales</h3>
+          <p>Zona Achachicala, La Paz, Bolivia<br>Tel: (2) 265894<br>Correo: info@valvulas.com</p>
+          <h3 class="text-xl font-bold mt-6">Servicio al Cliente</h3>
+          <p>Tel: +(591) 7459868<br>Correo: servicio@valvulas.com</p>
+        </div>
+        <img src="contacto.jpeg" alt="Contacto">
+      </div>
+    </section>
+  </div>
+
+  <section>
+    <h2 class="text-center text-3xl font-bold mb-6">Solicitud de Préstamo de Válvulas</h2>
+    <button id="requestLoanBtn">Realizar Solicitud</button>
+  </section>
+</div>
+
+    <div class="hidden" id="loanRequestModal">
+      <div class="modal-bg">
+        <div class="bg-white rounded-lg p-6 max-w-lg w-full shadow-lg">
+          <h3 class="text-xl font-bold text-gray-900">Solicitud de Préstamo</h3>
+            <form id="loanRequestForm">
+              <div class="mb-4">
+                <label for="valveType" class="block text-gray-700 font-bold mb-2">Tipo de Válvula:</label>
+                <select id="valveType" name="valveType" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                  <option value="">Seleccione un tipo de válvula</option>
+                  <option value="hidrocefalica-1">Válvula Hidrocefalica 1</option>
+                  <option value="hidrocefalica-2">Válvula Hidrocefalica 2</option>
+                  <option value="hidrocefalica-3">Válvula Hidrocefalica 3</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label for="doctor" class="block text-gray-700 font-bold mb-2">Médico:</label>
+                <input type="text" id="doctor" name="doctor" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Nombre del médico" required>
+              </div>
+              <div class="mb-4">
+                <label for="hospital" class="block text-gray-700 font-bold mb-2">Hospital:</label>
+                <input type="text" id="hospital" name="hospital" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Nombre del hospital" required>
+              </div>
+              <div class="mb-4">
+                <label for="city" class="block text-gray-700 font-bold mb-2">Ciudad:</label>
+                <input type="text" id="city" name="city" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Ciudad" required>
+              </div>
+              <div class="mb-4">
+                <label for="description" class="block text-gray-700 font-bold mb-2">Descripción:</label>
+                <textarea id="description" name="description" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></textarea>
+              </div>
+              <div class="mb-4">
+                <label for="media" class="block text-gray-700 font-bold mb-2">Adjuntar Documento/Imagen:</label>
+                <input type="file" id="media" name="media" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+              </div>
+              <div class="flex justify-between">
+                <button type="button" id="cancelBtn" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded">
+                  Cancelar
+                </button>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">
+                  Enviar Solicitud
+                </button>
+              </div>
+            </form>         
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="chatbot" class="minimized">
+    <div class="chatbot-header">
+      <span>Chat de Ayuda</span>
+      <button class="minimize-btn">−</button>
+    </div>
+    <div class="chatbot-content">
+      <div id="chatbot-messages"></div>
+      <input type="text" id="chatbot-input" placeholder="Escribe tu mensaje..." />
+      <button id="chatbot-send">Enviar Mensaje</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Empresa de Válvulas Hidrocefálicas</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <script>
+      var slider = tns({
+        container: '.product-carousel',
+        items: 2,
+        slideBy: 'page',
+        autoplay: true,
+        nav: true,
+        controls: false,
+        responsive: {
+          640: { items: 2 },
+          768: { items: 3 }
+        }
+      });
+
+    document.getElementById('requestLoanBtn').addEventListener('click', () => {
+      document.getElementById('loanRequestModal').classList.remove('hidden');
+    });
+
+    document.getElementById('cancelBtn').addEventListener('click', () => {
+      document.getElementById('loanRequestModal').classList.add('hidden');
+    });
+
+    document.getElementById('loanRequestForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      try {
+        await axios.post('/api/loan-requests', formData);
+        alert('Solicitud enviada con éxito');
+        document.getElementById('loanRequestModal').classList.add('hidden');
+      } catch (error) {
+        alert('Error al enviar la solicitud');
+      }
+    });
+
+    var aboutSlider = tns({
+      container: '.about-carousel',
+      items: 1,
+      slideBy: 1,
+      autoplay: true,
+      autoplayTimeout: 4000,
+      autoplayButtonOutput: false,
+      nav: true,
+      controls: false,
+      mouseDrag: true,
+      speed: 400,
+      mode: 'carousel',
+      preventScrollOnTouch: 'auto',
+      loop: true,
+      rewind: false,
+      gutter: 0,
+      edgePadding: 0,
+      responsive: {
+        640: {
+          items: 1
+        }
+      }
+    });
+    
+      // Variables del chatbot
+      const chatbot = document.getElementById('chatbot');
+      const minimizeBtn = document.querySelector('.minimize-btn');
+      const chatHeader = document.querySelector('.chatbot-header');
+      const chatbotMessages = document.getElementById('chatbot-messages');
+      const chatbotInput = document.getElementById('chatbot-input');
+      const chatbotSendButton = document.getElementById('chatbot-send');
+    
+      function toggleChatbot() {
+        chatbot.classList.toggle('minimized');
+        minimizeBtn.textContent = chatbot.classList.contains('minimized') ? '+' : '−';
+      }
+
+      minimizeBtn.addEventListener('click', toggleChatbot);
+      chatHeader.addEventListener('click', function(e) {
+        if (e.target !== minimizeBtn) {
+          toggleChatbot();
+        }
+      });
+    
+      chatbotSendButton.addEventListener('click', () => {
+        const userMessage = chatbotInput.value.trim();
+        if (userMessage) {
+          addMessage('user', userMessage);
+          chatbotInput.value = '';
+          processUserMessage(userMessage);
+        }
+      });
+    
+      chatbotInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          chatbotSendButton.click();
+        }
+      });
+
+      function addMessage(sender, message) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chatbot-message', `chatbot-message--${sender}`);
+        messageElement.textContent = message;
+        chatbotMessages.appendChild(messageElement);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    
+        if (chatbot.classList.contains('minimized')) {
+          toggleChatbot();
+        }
+      }
+    
+      function processUserMessage(userMessage) {
+        const lowerCaseMessage = userMessage.toLowerCase();
+    
+        if (lowerCaseMessage.includes('hola')) {
+          addMessage('chatbot', '¡Hola! ¿En qué puedo ayudarte?');
+        } else if (lowerCaseMessage.includes('adiós') || lowerCaseMessage.includes('hasta luego')) {
+          addMessage('chatbot', '¡Adios! Que tengas un buen dia.');
+        } else {
+          addMessage('chatbot', 'Lo siento, no entendí tu mensaje. estoy recien entrenando');
+        }
+      }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
